@@ -138,7 +138,7 @@ jobs:
       env:
         WORKBENCH_PROFILE: "ci"
         GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-        RENV_PATHS_ROOT: /home/rstudio/lesson/renv
+        RENV_PATHS_ROOT: /usr/local/lib/R/site-library
       volumes:
         - ${{ github.workspace }}:/home/rstudio/lesson
       options: --cpus 2
