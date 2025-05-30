@@ -165,6 +165,7 @@ jobs:
 
       - name: "Ensure sandpaper is loaded"
         run: |
+          .libPaths()
           library(sandpaper)
         shell: Rscript {0}
 
