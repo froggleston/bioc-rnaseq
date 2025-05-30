@@ -108,6 +108,12 @@ jobs:
         run: |
           git config --global --add safe.directory $(pwd)
 
+      - name: "Ensure sandpaper is loadable"
+        run: |
+          options(renv.config.external.libraries = c("/usr/local/lib/R/site-library"))
+          library(sandpaper)
+        shell: Rscript {0}
+
       - name: Setup Lesson Dependencies
         run: |
           Rscript /home/rstudio/.workbench/setup_lesson_deps.R
@@ -119,7 +125,7 @@ jobs:
       - name: Cache renv Directory
         uses: actions/cache@v4
         with:
-          path: /usr/local/lib/R/site-library
+          path: /home/rstudio/lesson/renv
           key: ${{ runner.os }}-${{ inputs.cache-version }}-renv-${{ needs.prepare.outputs.renv-cache-hashsum }}
           restore-keys:
             ${{ runner.os }}-${{ inputs.cache-version }}-renv-
