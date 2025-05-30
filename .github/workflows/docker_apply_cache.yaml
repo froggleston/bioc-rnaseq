@@ -84,7 +84,7 @@ jobs:
       env:
         WORKBENCH_PROFILE: "ci"
         GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-        RENV_PATHS_ROOT: /home/rstudio/lesson/renv
+        RENV_PATHS_ROOT: /usr/local/lib/R/site-library
         RENV_VERSION: ${{ needs.prepare.outputs.renv-cache-hashsum }}
       volumes:
         - ${{ github.workspace }}:/home/rstudio/lesson
@@ -118,7 +118,7 @@ jobs:
       - name: Cache renv Directory
         uses: actions/cache@v4
         with:
-          path: /home/rstudio/lesson/renv
+          path: /usr/local/lib/R/site-library
           key: ${{ runner.os }}-${{ inputs.cache-version }}-renv-${{ needs.prepare.outputs.renv-cache-hashsum }}
           restore-keys:
             ${{ runner.os }}-${{ inputs.cache-version }}-renv-
