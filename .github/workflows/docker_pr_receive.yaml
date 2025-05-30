@@ -161,10 +161,7 @@ jobs:
 
       - name: "Ensure sandpaper is loadable"
         run: |
-          library(renv)
-          renv::settings$external.libraries("/usr/local/lib/R/site-library")
-          
-          .libPaths()
+          options(renv.config.external.libraries = c("/usr/local/lib/R/site-library"))
           library(sandpaper)
         shell: Rscript {0}
 
