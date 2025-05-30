@@ -138,7 +138,7 @@ jobs:
       env:
         WORKBENCH_PROFILE: "ci"
         GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-        RENV_PATHS_ROOT: ${{ github.workspace }}/renv
+        RENV_PATHS_ROOT: /home/rstudio/lesson/renv
         RENV_PROFILE: "lesson-requirements"
       volumes:
         - ${{ github.workspace }}:/home/rstudio/lesson
@@ -159,15 +159,18 @@ jobs:
         run: |
           git config --global --add safe.directory $(pwd)
 
-      - name: Setup Lesson Dependencies
+      - name: "Ensure sandpaper is loadable"
         run: |
-          Rscript /home/rstudio/.workbench/setup_lesson_deps.R
-
-      - name: "Ensure sandpaper is loaded"
-        run: |
+          library(renv)
+          renv::settings$external.libraries("/usr/local/lib/R/site-library")
+          
           .libPaths()
           library(sandpaper)
         shell: Rscript {0}
+
+      - name: Setup Lesson Dependencies
+        run: |
+          Rscript /home/rstudio/.workbench/setup_lesson_deps.R
 
       - name: Fortify renv Cache
         if: ${{ needs.check-renv.outputs.renv-needed == 'true' }}
