@@ -42,6 +42,7 @@ jobs:
     needs: preflight
     outputs:
       is_valid: ${{ steps.check-pr.outputs.VALID }}
+      pr_branch: ${{ env.PR_BRANCH }}
     steps:
       - name: "Auto: Grab PR"
         if: ${{ github.event_name == 'pull_request' }}
@@ -127,6 +128,7 @@ jobs:
       CHIVE: ${{ github.workspace }}/site/chive
       PR: ${{ github.workspace }}/site/pr
       GHWMD: ${{ github.workspace }}/site/built
+      PR_BRANCH: ${{ needs.test-pr.outputs.pr_branch }}
     permissions:
       checks: write
       contents: write
@@ -141,7 +143,7 @@ jobs:
         - ${{ github.workspace }}:/home/rstudio/lesson
       options: --cpus 2
     steps:
-      - name: "Check Out Main Branch"
+      - name: "Check Out PR Branch"
         uses: actions/checkout@v4
         with:
           ref: ${{ env.PR_BRANCH }}
