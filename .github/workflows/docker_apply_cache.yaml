@@ -84,7 +84,7 @@ jobs:
       env:
         WORKBENCH_PROFILE: "ci"
         GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-        RENV_PATHS_ROOT: ${{ github.workspace }}/renv
+        RENV_PATHS_ROOT: /home/rstudio/lesson/renv
         RENV_PROFILE: "lesson-requirements"
         RENV_VERSION: ${{ needs.prepare.outputs.renv-cache-hashsum }}
       volumes:
