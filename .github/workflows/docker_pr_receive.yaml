@@ -162,6 +162,11 @@ jobs:
         run: |
           Rscript /home/rstudio/.workbench/setup_lesson_deps.R
 
+      - name: "Ensure sandpaper is loaded"
+        run: |
+          library(sandpaper)
+        shell: Rscript {0}
+
       - name: Fortify renv Cache
         if: ${{ needs.check-renv.outputs.renv-needed == 'true' }}
         run: |
