@@ -500,9 +500,9 @@ microbenchmark(
 
 ``` output
 Unit: microseconds
-   expr     min      lq      mean  median      uq     max neval
- fisher 243.615 246.164 256.87370 249.585 254.885 499.832   100
-  hyper   1.523   1.789   2.64215   2.625   2.890  18.635   100
+   expr     min       lq      mean   median       uq     max neval
+ fisher 252.862 256.6095 271.66396 260.1555 274.3825 554.906   100
+  hyper   1.593   1.8085   2.86012   3.0160   3.2860  16.892   100
 ```
 
 It is very astonishing that `phyper()` is hundreds of times faster than
@@ -791,7 +791,7 @@ head(BP_Id)
 ```
 
 ``` output
-[1] "GO:0008150" "GO:0001553" "GO:0001869" "GO:0002438" "GO:0006953"
+[1] "GO:0002764" "GO:0001553" "GO:0001869" "GO:0002438" "GO:0006953"
 [6] "GO:0007584"
 ```
 
@@ -1033,32 +1033,34 @@ msigdbr_collections()
 ```
 
 ``` output
-# A tibble: 23 × 3
-   gs_cat gs_subcat         num_genesets
-   <chr>  <chr>                    <int>
- 1 C1     ""                         299
- 2 C2     "CGP"                     3384
- 3 C2     "CP"                        29
- 4 C2     "CP:BIOCARTA"              292
- 5 C2     "CP:KEGG"                  186
- 6 C2     "CP:PID"                   196
- 7 C2     "CP:REACTOME"             1615
- 8 C2     "CP:WIKIPATHWAYS"          664
- 9 C3     "MIR:MIRDB"               2377
-10 C3     "MIR:MIR_Legacy"           221
-11 C3     "TFT:GTRD"                 518
-12 C3     "TFT:TFT_Legacy"           610
-13 C4     "CGN"                      427
-14 C4     "CM"                       431
-15 C5     "GO:BP"                   7658
-16 C5     "GO:CC"                   1006
-17 C5     "GO:MF"                   1738
-18 C5     "HPO"                     5071
-19 C6     ""                         189
-20 C7     "IMMUNESIGDB"             4872
-21 C7     "VAX"                      347
-22 C8     ""                         700
-23 H      ""                          50
+# A tibble: 25 × 4
+   gs_collection gs_subcollection  gs_collection_name               num_genesets
+   <chr>         <chr>             <chr>                                   <int>
+ 1 C1            ""                "Positional"                              302
+ 2 C2            "CGP"             "Chemical and Genetic Perturbat…         3494
+ 3 C2            "CP"              "Canonical Pathways"                       19
+ 4 C2            "CP:BIOCARTA"     "BioCarta Pathways"                       292
+ 5 C2            "CP:KEGG_LEGACY"  "KEGG Legacy Pathways"                    186
+ 6 C2            "CP:KEGG_MEDICUS" "KEGG Medicus Pathways"                   658
+ 7 C2            "CP:PID"          "PID Pathways"                            196
+ 8 C2            "CP:REACTOME"     "Reactome Pathways"                      1736
+ 9 C2            "CP:WIKIPATHWAYS" "WikiPathways"                            830
+10 C3            "MIR:MIRDB"       "miRDB"                                  2377
+11 C3            "MIR:MIR_LEGACY"  "MIR_Legacy"                              221
+12 C3            "TFT:GTRD"        "GTRD"                                    505
+13 C3            "TFT:TFT_LEGACY"  "TFT_Legacy"                              610
+14 C4            "3CA"             "Curated Cancer Cell Atlas gene…          148
+15 C4            "CGN"             "Cancer Gene Neighborhoods"               427
+16 C4            "CM"              "Cancer Modules"                          431
+17 C5            "GO:BP"           "GO Biological Process"                  7608
+18 C5            "GO:CC"           "GO Cellular Component"                  1026
+19 C5            "GO:MF"           "GO Molecular Function"                  1820
+20 C5            "HPO"             "Human Phenotype Ontology"               5653
+21 C6            ""                "Oncogenic Signature"                     189
+22 C7            "IMMUNESIGDB"     "ImmuneSigDB"                            4872
+23 C7            "VAX"             "HIPC Vaccine Response"                   347
+24 C8            ""                "Cell Type Signature"                     840
+25 H             ""                "Hallmark"                                 50
 ```
 
 The first column in the above output is the primary category of gene sets.
@@ -1084,19 +1086,22 @@ head(MSigDBGeneSets)
 ```
 
 ``` output
-# A tibble: 6 × 18
-  gs_cat gs_subcat gs_name               gene_symbol entrez_gene ensembl_gene   
-  <chr>  <chr>     <chr>                 <chr>             <int> <chr>          
-1 H      ""        HALLMARK_ADIPOGENESIS Abca1             11303 ENSMUSG0000001…
-2 H      ""        HALLMARK_ADIPOGENESIS Abcb8             74610 ENSMUSG0000002…
-3 H      ""        HALLMARK_ADIPOGENESIS Acaa2             52538 ENSMUSG0000003…
-4 H      ""        HALLMARK_ADIPOGENESIS Acadl             11363 ENSMUSG0000002…
-5 H      ""        HALLMARK_ADIPOGENESIS Acadm             11364 ENSMUSG0000006…
-6 H      ""        HALLMARK_ADIPOGENESIS Acads             11409 ENSMUSG0000002…
-# ℹ 12 more variables: human_gene_symbol <chr>, human_entrez_gene <int>,
-#   human_ensembl_gene <chr>, gs_id <chr>, gs_pmid <chr>, gs_geoid <chr>,
-#   gs_exact_source <chr>, gs_url <chr>, gs_description <chr>, taxon_id <int>,
-#   ortholog_sources <chr>, num_ortholog_sources <dbl>
+# A tibble: 6 × 26
+  gene_symbol ncbi_gene ensembl_gene db_gene_symbol db_ncbi_gene db_ensembl_gene
+  <chr>       <chr>     <chr>        <chr>          <chr>        <chr>          
+1 Abca1       11303     ENSMUSG0000… ABCA1          19           ENSG00000165029
+2 Abcb8       74610     ENSMUSG0000… ABCB8          11194        ENSG00000197150
+3 Acaa2       52538     ENSMUSG0000… ACAA2          10449        ENSG00000167315
+4 Acadl       11363     ENSMUSG0000… ACADL          33           ENSG00000115361
+5 Acadm       11364     ENSMUSG0000… ACADM          34           ENSG00000117054
+6 Acads       11409     ENSMUSG0000… ACADS          35           ENSG00000122971
+# ℹ 20 more variables: source_gene <chr>, gs_id <chr>, gs_name <chr>,
+#   gs_collection <chr>, gs_subcollection <chr>, gs_collection_name <chr>,
+#   gs_description <chr>, gs_source_species <chr>, gs_pmid <chr>,
+#   gs_geoid <chr>, gs_exact_source <chr>, gs_url <chr>, db_version <chr>,
+#   db_target_species <chr>, ortholog_taxon_id <int>, ortholog_sources <chr>,
+#   num_ortholog_sources <dbl>, entrez_gene <chr>, gs_cat <chr>,
+#   gs_subcat <chr>
 ```
 
 The output is in the `tibble` class. If you have no experience with it, don't
@@ -1111,7 +1116,7 @@ MSigDBGeneSets[, c("gs_name", "ensembl_gene")]
 ```
 
 ``` output
-# A tibble: 7,384 × 2
+# A tibble: 7,379 × 2
    gs_name               ensembl_gene      
    <chr>                 <chr>             
  1 HALLMARK_ADIPOGENESIS ENSMUSG00000015243
@@ -1124,7 +1129,7 @@ MSigDBGeneSets[, c("gs_name", "ensembl_gene")]
  8 HALLMARK_ADIPOGENESIS ENSMUSG00000022477
  9 HALLMARK_ADIPOGENESIS ENSMUSG00000020777
 10 HALLMARK_ADIPOGENESIS ENSMUSG00000022994
-# ℹ 7,374 more rows
+# ℹ 7,369 more rows
 ```
 
 ``` r
@@ -1133,7 +1138,7 @@ MSigDBGeneSets[, c("ensembl_gene", "gs_name")]
 ```
 
 ``` output
-# A tibble: 7,384 × 2
+# A tibble: 7,379 × 2
    ensembl_gene       gs_name              
    <chr>              <chr>                
  1 ENSMUSG00000015243 HALLMARK_ADIPOGENESIS
@@ -1146,7 +1151,7 @@ MSigDBGeneSets[, c("ensembl_gene", "gs_name")]
  8 ENSMUSG00000022477 HALLMARK_ADIPOGENESIS
  9 ENSMUSG00000020777 HALLMARK_ADIPOGENESIS
 10 ENSMUSG00000022994 HALLMARK_ADIPOGENESIS
-# ℹ 7,374 more rows
+# ℹ 7,369 more rows
 ```
 
 If you only want to use a sub-category gene sets, e.g. `"CP:KEGG"` from `"C2"`,
@@ -1230,7 +1235,7 @@ resTimeGO = enrichGO(gene = timeDEgenes,
 ```
 
 ``` output
---> Expected input gene ID: 76856,74386,26362,381229,18109,228421
+--> Expected input gene ID: 19819,22164,83945,18817,56708,75698
 ```
 
 ``` output
@@ -1263,33 +1268,33 @@ head(resTimeGOTable)
 
 ``` output
                    ID                Description GeneRatio   BgRatio RichFactor
-GO:0050900 GO:0050900        leukocyte migration    51/968 402/28905  0.1268657
-GO:0006935 GO:0006935                 chemotaxis    52/968 465/28905  0.1118280
-GO:0042330 GO:0042330                      taxis    52/968 467/28905  0.1113490
-GO:0030595 GO:0030595       leukocyte chemotaxis    36/968 242/28905  0.1487603
-GO:0071674 GO:0071674 mononuclear cell migration    32/968 203/28905  0.1576355
-GO:0060326 GO:0060326            cell chemotaxis    41/968 334/28905  0.1227545
+GO:0050900 GO:0050900        leukocyte migration    50/965 408/28832  0.1225490
+GO:0006935 GO:0006935                 chemotaxis    54/965 475/28832  0.1136842
+GO:0042330 GO:0042330                      taxis    54/965 477/28832  0.1132075
+GO:0030595 GO:0030595       leukocyte chemotaxis    35/965 242/28832  0.1446281
+GO:0060326 GO:0060326            cell chemotaxis    41/965 337/28832  0.1216617
+GO:0071674 GO:0071674 mononuclear cell migration    32/965 229/28832  0.1397380
            FoldEnrichment    zScore       pvalue     p.adjust       qvalue
-GO:0050900       3.788277 10.479256 3.536123e-16 1.795643e-12 1.304643e-12
-GO:0006935       3.339243  9.465940 3.336947e-14 6.712316e-11 4.876903e-11
-GO:0042330       3.324942  9.428613 3.965528e-14 6.712316e-11 4.876903e-11
-GO:0030595       4.442063 10.009042 6.591196e-14 8.367524e-11 6.079511e-11
-GO:0071674       4.707080  9.866216 3.208410e-13 3.258461e-10 2.367469e-10
-GO:0060326       3.665515  9.120495 8.641191e-13 7.313328e-10 5.313575e-10
-                                                                                                                                                                                                                                                                                                               geneID
-GO:0050900              Tnfsf18/Sell/Slamf9/Fut7/Itga4/Mdk/Grem1/Ada/Prex1/Edn3/P2ry12/Il12a/S100a8/S100a9/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Trpm4/Hsd3b7/Itgam/Adam8/Ascl2/Calr/Ccl17/Enpp1/Aire/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Aoc3/Itgb3/Ccl28/Lgals3/Ptk2b/Emp2/Apod/Retnlg/Plg/Fpr2/Dusp1/Ager/Il33/Ch25h
-GO:0006935 Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/P2ry12/Il12a/S100a8/S100a9/Lpar1/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Ntf3/Trpm4/Hsd3b7/Itgam/Adam8/Lsp1/Calr/Ccl17/Robo3/Cmtm7/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Itgb3/Tubb2b/Ccl28/Lgals3/Cmtm5/Ptk2b/Nr4a1/Casr/Retnlg/Fpr2/Dusp1/Ager/Stx3/Ch25h/Plxnb3/Nox1
-GO:0042330 Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/P2ry12/Il12a/S100a8/S100a9/Lpar1/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Ntf3/Trpm4/Hsd3b7/Itgam/Adam8/Lsp1/Calr/Ccl17/Robo3/Cmtm7/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Itgb3/Tubb2b/Ccl28/Lgals3/Cmtm5/Ptk2b/Nr4a1/Casr/Retnlg/Fpr2/Dusp1/Ager/Stx3/Ch25h/Plxnb3/Nox1
-GO:0030595                                                                                              Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/Il12a/S100a8/S100a9/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Trpm4/Hsd3b7/Itgam/Adam8/Calr/Ccl17/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Lgals3/Ptk2b/Retnlg/Fpr2/Dusp1/Ch25h
-GO:0071674                                                                                                                      Tnfsf18/Slamf9/Fut7/Itga4/Mdk/Grem1/Il12a/Nbl1/Padi2/Alox5/Trpm4/Hsd3b7/Adam8/Ascl2/Calr/Ccl17/Aire/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Itgb3/Lgals3/Ptk2b/Apod/Retnlg/Plg/Fpr2/Dusp1/Ager/Ch25h
-GO:0060326                                                                Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/Il12a/S100a8/S100a9/Lpar1/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Trpm4/Hsd3b7/Itgam/Adam8/Calr/Ccl17/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Ccl28/Lgals3/Ptk2b/Nr4a1/Retnlg/Fpr2/Dusp1/Ch25h/Plxnb3/Nox1
+GO:0050900       3.661485 10.075346 2.751321e-15 1.053782e-11 7.745382e-12
+GO:0006935       3.396625  9.800882 5.186751e-15 1.053782e-11 7.745382e-12
+GO:0042330       3.382383  9.763475 6.190224e-15 1.053782e-11 7.745382e-12
+GO:0030595       4.321158  9.654694 3.373742e-13 4.307425e-10 3.165991e-10
+GO:0060326       3.634975  9.054313 1.137629e-12 1.161974e-09 8.540597e-10
+GO:0071674       4.175053  8.976588 8.861995e-12 6.891923e-09 5.065617e-09
+                                                                                                                                                                                                                                                                                                                             geneID
+GO:0050900                                 Tnfsf18/Sell/Slamf9/Fut7/Itga4/Mdk/Grem1/Ada/Prex1/Edn3/P2ry12/Il12a/S100a8/S100a9/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Trpm4/Hsd3b7/Itgam/Adam8/Ascl2/Gdf15/Calr/Enpp1/Aire/Ccl2/Ccl7/Ccl5/Ccr7/Aoc3/Itgb3/Ccl28/Lgals3/Ptk2b/Emp2/Apod/Retnlg/Plg/Fpr2/Dusp1/Ager/Il33/Ch25h
+GO:0006935 Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/P2ry12/Il12a/S100a7a/S100a8/S100a9/Lpar1/Ptgr1/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Ntf3/Trpm4/Hsd3b7/Itgam/Adam8/Lsp1/Calr/Ccl17/Robo3/Cmtm7/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Itgb3/Tubb2b/Ccl28/Lgals3/Cmtm5/Ptk2b/Nr4a1/Casr/Retnlg/Fpr2/Dusp1/Ager/Stx3/Ch25h/Plxnb3/Nox1
+GO:0042330 Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/P2ry12/Il12a/S100a7a/S100a8/S100a9/Lpar1/Ptgr1/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Ntf3/Trpm4/Hsd3b7/Itgam/Adam8/Lsp1/Calr/Ccl17/Robo3/Cmtm7/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Itgb3/Tubb2b/Ccl28/Lgals3/Cmtm5/Ptk2b/Nr4a1/Casr/Retnlg/Fpr2/Dusp1/Ager/Stx3/Ch25h/Plxnb3/Nox1
+GO:0030595                                                                                                                 Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/Il12a/S100a8/S100a9/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Trpm4/Hsd3b7/Itgam/Adam8/Calr/Ccl2/Ccl7/Ccl5/Ccr7/Ccl28/Lgals3/Ptk2b/Retnlg/Fpr2/Dusp1/Ch25h
+GO:0060326                                                                              Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/Il12a/S100a8/S100a9/Lpar1/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Trpm4/Hsd3b7/Itgam/Adam8/Calr/Ccl17/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Ccl28/Lgals3/Ptk2b/Nr4a1/Retnlg/Fpr2/Dusp1/Ch25h/Plxnb3/Nox1
+GO:0071674                                                                                                                                  Tnfsf18/Slamf9/Fut7/Itga4/Mdk/Grem1/P2ry12/Il12a/Nbl1/Padi2/Alox5/Trpm4/Hsd3b7/Adam8/Ascl2/Calr/Enpp1/Aire/Ccl2/Ccl7/Ccl5/Ccr7/Itgb3/Lgals3/Ptk2b/Apod/Retnlg/Plg/Fpr2/Dusp1/Ager/Ch25h
            Count
-GO:0050900    51
-GO:0006935    52
-GO:0042330    52
-GO:0030595    36
-GO:0071674    32
+GO:0050900    50
+GO:0006935    54
+GO:0042330    54
+GO:0030595    35
 GO:0060326    41
+GO:0071674    32
 ```
 
 Now `enrichGO()` went through! The returned object `resTimeGO` is in a special
@@ -1357,33 +1362,33 @@ head(resTimeGOTable)
 
 ``` output
                    ID                Description GeneRatio   BgRatio RichFactor
-GO:0050900 GO:0050900        leukocyte migration    51/968 402/28905  0.1268657
-GO:0006935 GO:0006935                 chemotaxis    52/968 465/28905  0.1118280
-GO:0042330 GO:0042330                      taxis    52/968 467/28905  0.1113490
-GO:0030595 GO:0030595       leukocyte chemotaxis    36/968 242/28905  0.1487603
-GO:0071674 GO:0071674 mononuclear cell migration    32/968 203/28905  0.1576355
-GO:0060326 GO:0060326            cell chemotaxis    41/968 334/28905  0.1227545
+GO:0050900 GO:0050900        leukocyte migration    50/965 408/28832  0.1225490
+GO:0006935 GO:0006935                 chemotaxis    54/965 475/28832  0.1136842
+GO:0042330 GO:0042330                      taxis    54/965 477/28832  0.1132075
+GO:0030595 GO:0030595       leukocyte chemotaxis    35/965 242/28832  0.1446281
+GO:0060326 GO:0060326            cell chemotaxis    41/965 337/28832  0.1216617
+GO:0071674 GO:0071674 mononuclear cell migration    32/965 229/28832  0.1397380
            FoldEnrichment    zScore       pvalue     p.adjust       qvalue
-GO:0050900       3.788277 10.479256 3.536123e-16 1.795643e-12 1.304643e-12
-GO:0006935       3.339243  9.465940 3.336947e-14 6.712316e-11 4.876903e-11
-GO:0042330       3.324942  9.428613 3.965528e-14 6.712316e-11 4.876903e-11
-GO:0030595       4.442063 10.009042 6.591196e-14 8.367524e-11 6.079511e-11
-GO:0071674       4.707080  9.866216 3.208410e-13 3.258461e-10 2.367469e-10
-GO:0060326       3.665515  9.120495 8.641191e-13 7.313328e-10 5.313575e-10
-                                                                                                                                                                                                                                                                                                               geneID
-GO:0050900              Tnfsf18/Sell/Slamf9/Fut7/Itga4/Mdk/Grem1/Ada/Prex1/Edn3/P2ry12/Il12a/S100a8/S100a9/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Trpm4/Hsd3b7/Itgam/Adam8/Ascl2/Calr/Ccl17/Enpp1/Aire/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Aoc3/Itgb3/Ccl28/Lgals3/Ptk2b/Emp2/Apod/Retnlg/Plg/Fpr2/Dusp1/Ager/Il33/Ch25h
-GO:0006935 Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/P2ry12/Il12a/S100a8/S100a9/Lpar1/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Ntf3/Trpm4/Hsd3b7/Itgam/Adam8/Lsp1/Calr/Ccl17/Robo3/Cmtm7/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Itgb3/Tubb2b/Ccl28/Lgals3/Cmtm5/Ptk2b/Nr4a1/Casr/Retnlg/Fpr2/Dusp1/Ager/Stx3/Ch25h/Plxnb3/Nox1
-GO:0042330 Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/P2ry12/Il12a/S100a8/S100a9/Lpar1/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Ntf3/Trpm4/Hsd3b7/Itgam/Adam8/Lsp1/Calr/Ccl17/Robo3/Cmtm7/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Itgb3/Tubb2b/Ccl28/Lgals3/Cmtm5/Ptk2b/Nr4a1/Casr/Retnlg/Fpr2/Dusp1/Ager/Stx3/Ch25h/Plxnb3/Nox1
-GO:0030595                                                                                              Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/Il12a/S100a8/S100a9/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Trpm4/Hsd3b7/Itgam/Adam8/Calr/Ccl17/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Lgals3/Ptk2b/Retnlg/Fpr2/Dusp1/Ch25h
-GO:0071674                                                                                                                      Tnfsf18/Slamf9/Fut7/Itga4/Mdk/Grem1/Il12a/Nbl1/Padi2/Alox5/Trpm4/Hsd3b7/Adam8/Ascl2/Calr/Ccl17/Aire/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Itgb3/Lgals3/Ptk2b/Apod/Retnlg/Plg/Fpr2/Dusp1/Ager/Ch25h
-GO:0060326                                                                Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/Il12a/S100a8/S100a9/Lpar1/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Trpm4/Hsd3b7/Itgam/Adam8/Calr/Ccl17/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Ccl28/Lgals3/Ptk2b/Nr4a1/Retnlg/Fpr2/Dusp1/Ch25h/Plxnb3/Nox1
+GO:0050900       3.661485 10.075346 2.751321e-15 1.053782e-11 7.745382e-12
+GO:0006935       3.396625  9.800882 5.186751e-15 1.053782e-11 7.745382e-12
+GO:0042330       3.382383  9.763475 6.190224e-15 1.053782e-11 7.745382e-12
+GO:0030595       4.321158  9.654694 3.373742e-13 4.307425e-10 3.165991e-10
+GO:0060326       3.634975  9.054313 1.137629e-12 1.161974e-09 8.540597e-10
+GO:0071674       4.175053  8.976588 8.861995e-12 6.891923e-09 5.065617e-09
+                                                                                                                                                                                                                                                                                                                             geneID
+GO:0050900                                 Tnfsf18/Sell/Slamf9/Fut7/Itga4/Mdk/Grem1/Ada/Prex1/Edn3/P2ry12/Il12a/S100a8/S100a9/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Trpm4/Hsd3b7/Itgam/Adam8/Ascl2/Gdf15/Calr/Enpp1/Aire/Ccl2/Ccl7/Ccl5/Ccr7/Aoc3/Itgb3/Ccl28/Lgals3/Ptk2b/Emp2/Apod/Retnlg/Plg/Fpr2/Dusp1/Ager/Il33/Ch25h
+GO:0006935 Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/P2ry12/Il12a/S100a7a/S100a8/S100a9/Lpar1/Ptgr1/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Ntf3/Trpm4/Hsd3b7/Itgam/Adam8/Lsp1/Calr/Ccl17/Robo3/Cmtm7/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Itgb3/Tubb2b/Ccl28/Lgals3/Cmtm5/Ptk2b/Nr4a1/Casr/Retnlg/Fpr2/Dusp1/Ager/Stx3/Ch25h/Plxnb3/Nox1
+GO:0042330 Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/P2ry12/Il12a/S100a7a/S100a8/S100a9/Lpar1/Ptgr1/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Ntf3/Trpm4/Hsd3b7/Itgam/Adam8/Lsp1/Calr/Ccl17/Robo3/Cmtm7/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Itgb3/Tubb2b/Ccl28/Lgals3/Cmtm5/Ptk2b/Nr4a1/Casr/Retnlg/Fpr2/Dusp1/Ager/Stx3/Ch25h/Plxnb3/Nox1
+GO:0030595                                                                                                                 Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/Il12a/S100a8/S100a9/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Trpm4/Hsd3b7/Itgam/Adam8/Calr/Ccl2/Ccl7/Ccl5/Ccr7/Ccl28/Lgals3/Ptk2b/Retnlg/Fpr2/Dusp1/Ch25h
+GO:0060326                                                                              Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/Il12a/S100a8/S100a9/Lpar1/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Trpm4/Hsd3b7/Itgam/Adam8/Calr/Ccl17/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Ccl28/Lgals3/Ptk2b/Nr4a1/Retnlg/Fpr2/Dusp1/Ch25h/Plxnb3/Nox1
+GO:0071674                                                                                                                                  Tnfsf18/Slamf9/Fut7/Itga4/Mdk/Grem1/P2ry12/Il12a/Nbl1/Padi2/Alox5/Trpm4/Hsd3b7/Adam8/Ascl2/Calr/Enpp1/Aire/Ccl2/Ccl7/Ccl5/Ccr7/Itgb3/Lgals3/Ptk2b/Apod/Retnlg/Plg/Fpr2/Dusp1/Ager/Ch25h
            Count
-GO:0050900    51
-GO:0006935    52
-GO:0042330    52
-GO:0030595    36
-GO:0071674    32
+GO:0050900    50
+GO:0006935    54
+GO:0042330    54
+GO:0030595    35
 GO:0060326    41
+GO:0071674    32
 ```
 
 
@@ -1470,27 +1475,27 @@ mmu00565                    Lipid metabolism mmu00565
 mmu00592                    Lipid metabolism mmu00592
 mmu04913                    Endocrine system mmu04913
 mmu04061 Signaling molecules and interaction mmu04061
-                                                                                        Description
-mmu00590                                   Arachidonic acid metabolism - Mus musculus (house mouse)
-mmu00591                                      Linoleic acid metabolism - Mus musculus (house mouse)
-mmu00565                                        Ether lipid metabolism - Mus musculus (house mouse)
-mmu00592                               alpha-Linolenic acid metabolism - Mus musculus (house mouse)
-mmu04913                                       Ovarian steroidogenesis - Mus musculus (house mouse)
-mmu04061 Viral protein interaction with cytokine and cytokine receptor - Mus musculus (house mouse)
+                                                           Description
+mmu00590                                   Arachidonic acid metabolism
+mmu00591                                      Linoleic acid metabolism
+mmu00565                                        Ether lipid metabolism
+mmu00592                               alpha-Linolenic acid metabolism
+mmu04913                                       Ovarian steroidogenesis
+mmu04061 Viral protein interaction with cytokine and cytokine receptor
          GeneRatio BgRatio RichFactor FoldEnrichment   zScore       pvalue
-mmu00590    16/451 89/9574  0.1797753       3.816338 5.934780 3.315964e-06
-mmu00591    12/451 55/9574  0.2181818       4.631647 6.005273 7.123538e-06
-mmu00565    11/451 48/9574  0.2291667       4.864837 5.968154 1.041382e-05
-mmu00592     8/451 25/9574  0.3200000       6.793082 6.448285 1.212562e-05
-mmu04913    12/451 64/9574  0.1875000       3.980322 5.318710 3.625358e-05
-mmu04061    14/451 95/9574  0.1473684       3.128393 4.635279 1.329918e-04
+mmu00590    16/451 89/9577  0.1797753       3.817534 5.936315 3.302731e-06
+mmu00591    12/451 55/9577  0.2181818       4.633098 6.006680 7.100991e-06
+mmu00565    11/451 48/9577  0.2291667       4.866362 5.969522 1.038323e-05
+mmu00592     8/451 25/9577  0.3200000       6.795211 6.449591 1.209800e-05
+mmu04913    12/451 64/9577  0.1875000       3.981569 5.320056 3.614324e-05
+mmu04061    14/451 95/9577  0.1473684       3.129373 4.636644 1.325575e-04
              p.adjust       qvalue
-mmu00590 0.0009488299 0.0008232659
-mmu00591 0.0009488299 0.0008232659
-mmu00565 0.0009488299 0.0008232659
-mmu00592 0.0009488299 0.0008232659
-mmu04913 0.0022694740 0.0019691418
-mmu04061 0.0069377408 0.0060196305
+mmu00590 0.0009496932 0.0008245744
+mmu00591 0.0009496932 0.0008245744
+mmu00565 0.0009496932 0.0008245744
+mmu00592 0.0009496932 0.0008245744
+mmu04913 0.0022697955 0.0019707578
+mmu04061 0.0069371755 0.0060232264
                                                                                                        geneID
 mmu00590 18783/19215/211429/329502/78390/19223/67103/242546/13118/18781/18784/11689/232889/15446/237625/11687
 mmu00591                        18783/211429/329502/78390/242546/18781/18784/13113/622127/232889/237625/11687
@@ -1536,19 +1541,22 @@ head(gene_sets)
 ```
 
 ``` output
-# A tibble: 6 × 18
-  gs_cat gs_subcat gs_name               gene_symbol entrez_gene ensembl_gene   
-  <chr>  <chr>     <chr>                 <chr>             <int> <chr>          
-1 H      ""        HALLMARK_ADIPOGENESIS Abca1             11303 ENSMUSG0000001…
-2 H      ""        HALLMARK_ADIPOGENESIS Abcb8             74610 ENSMUSG0000002…
-3 H      ""        HALLMARK_ADIPOGENESIS Acaa2             52538 ENSMUSG0000003…
-4 H      ""        HALLMARK_ADIPOGENESIS Acadl             11363 ENSMUSG0000002…
-5 H      ""        HALLMARK_ADIPOGENESIS Acadm             11364 ENSMUSG0000006…
-6 H      ""        HALLMARK_ADIPOGENESIS Acads             11409 ENSMUSG0000002…
-# ℹ 12 more variables: human_gene_symbol <chr>, human_entrez_gene <int>,
-#   human_ensembl_gene <chr>, gs_id <chr>, gs_pmid <chr>, gs_geoid <chr>,
-#   gs_exact_source <chr>, gs_url <chr>, gs_description <chr>, taxon_id <int>,
-#   ortholog_sources <chr>, num_ortholog_sources <dbl>
+# A tibble: 6 × 26
+  gene_symbol ncbi_gene ensembl_gene db_gene_symbol db_ncbi_gene db_ensembl_gene
+  <chr>       <chr>     <chr>        <chr>          <chr>        <chr>          
+1 Abca1       11303     ENSMUSG0000… ABCA1          19           ENSG00000165029
+2 Abcb8       74610     ENSMUSG0000… ABCB8          11194        ENSG00000197150
+3 Acaa2       52538     ENSMUSG0000… ACAA2          10449        ENSG00000167315
+4 Acadl       11363     ENSMUSG0000… ACADL          33           ENSG00000115361
+5 Acadm       11364     ENSMUSG0000… ACADM          34           ENSG00000117054
+6 Acads       11409     ENSMUSG0000… ACADS          35           ENSG00000122971
+# ℹ 20 more variables: source_gene <chr>, gs_id <chr>, gs_name <chr>,
+#   gs_collection <chr>, gs_subcollection <chr>, gs_collection_name <chr>,
+#   gs_description <chr>, gs_source_species <chr>, gs_pmid <chr>,
+#   gs_geoid <chr>, gs_exact_source <chr>, gs_url <chr>, db_version <chr>,
+#   db_target_species <chr>, ortholog_taxon_id <int>, ortholog_sources <chr>,
+#   num_ortholog_sources <dbl>, entrez_gene <chr>, gs_cat <chr>,
+#   gs_subcat <chr>
 ```
 
 As mentioned before, it is important the gene ID type in the gene sets should
@@ -1580,19 +1588,19 @@ HALLMARK_ALLOGRAFT_REJECTION       HALLMARK_ALLOGRAFT_REJECTION    23/291
 HALLMARK_ESTROGEN_RESPONSE_LATE HALLMARK_ESTROGEN_RESPONSE_LATE    23/291
 HALLMARK_INFLAMMATORY_RESPONSE   HALLMARK_INFLAMMATORY_RESPONSE    22/291
                                  BgRatio RichFactor FoldEnrichment   zScore
-HALLMARK_MYOGENESIS             201/4394  0.1542289       2.328803 5.135378
-HALLMARK_COMPLEMENT             196/4394  0.1326531       2.003016 3.825523
-HALLMARK_COAGULATION            139/4394  0.1438849       2.172612 3.741006
-HALLMARK_ALLOGRAFT_REJECTION    201/4394  0.1144279       1.727821 2.812786
-HALLMARK_ESTROGEN_RESPONSE_LATE 206/4394  0.1116505       1.685884 2.685080
-HALLMARK_INFLAMMATORY_RESPONSE  201/4394  0.1094527       1.652699 2.522462
+HALLMARK_MYOGENESIS             201/4393  0.1542289       2.328273 5.133984
+HALLMARK_COMPLEMENT             196/4393  0.1326531       2.002560 3.824271
+HALLMARK_COAGULATION            139/4393  0.1438849       2.172118 3.739899
+HALLMARK_ALLOGRAFT_REJECTION    201/4393  0.1144279       1.727428 2.811625
+HALLMARK_ESTROGEN_RESPONSE_LATE 206/4393  0.1116505       1.685500 2.683920
+HALLMARK_INFLAMMATORY_RESPONSE  201/4393  0.1094527       1.652323 2.521330
                                       pvalue     p.adjust       qvalue
-HALLMARK_MYOGENESIS             5.710171e-06 0.0002740882 0.0002284068
-HALLMARK_COMPLEMENT             4.300844e-04 0.0103220246 0.0086016872
-HALLMARK_COAGULATION            7.088433e-04 0.0113414921 0.0094512434
-HALLMARK_ALLOGRAFT_REJECTION    6.397659e-03 0.0767719033 0.0639765861
-HALLMARK_ESTROGEN_RESPONSE_LATE 8.584183e-03 0.0824081536 0.0686734614
-HALLMARK_INFLAMMATORY_RESPONSE  1.256794e-02 0.0960740794 0.0800617329
+HALLMARK_MYOGENESIS             5.736712e-06 0.0002753622 0.0002294685
+HALLMARK_COMPLEMENT             4.315862e-04 0.0103580695 0.0086317246
+HALLMARK_COAGULATION            7.108706e-04 0.0113739297 0.0094782747
+HALLMARK_ALLOGRAFT_REJECTION    6.414928e-03 0.0769791391 0.0641492826
+HALLMARK_ESTROGEN_RESPONSE_LATE 8.606752e-03 0.0826248216 0.0688540180
+HALLMARK_INFLAMMATORY_RESPONSE  1.259890e-02 0.0963081013 0.0802567511
                                                                                                                                                                                                                 geneID
 HALLMARK_MYOGENESIS             Myl1/Casq1/Aplnr/Tnnc2/Ptgis/Gja5/Col15a1/Cav3/Tnnt1/Ryr1/Cox6a2/Tnni2/Lsp1/Nqo1/Hspb2/Cryab/Erbb3/Stc2/Gpx3/Sparc/Myh3/Myh1/Col1a1/Cacng1/Itgb4/Bdkrb2/Mapk12/Apod/Spdef/Cdkn1a/Actn3
 HALLMARK_COMPLEMENT                                                Serpinb2/Pla2g4a/Cd46/Hspa5/Cp/Gnb4/S100a9/Cda/Cxcl1/Apoc1/Itgam/Irf7/Klkb1/Mmp15/Mmp8/Ccl5/Lgals3/Gzmb/Tmprss6/Maff/Plg/Psmb9/Hspa1a/C3/Dusp5/Phex
@@ -1805,33 +1813,33 @@ head(resTimeGOTable)
 
 ``` output
                    ID                Description GeneRatio   BgRatio RichFactor
-GO:0050900 GO:0050900        leukocyte migration    51/968 402/28905  0.1268657
-GO:0006935 GO:0006935                 chemotaxis    52/968 465/28905  0.1118280
-GO:0042330 GO:0042330                      taxis    52/968 467/28905  0.1113490
-GO:0030595 GO:0030595       leukocyte chemotaxis    36/968 242/28905  0.1487603
-GO:0071674 GO:0071674 mononuclear cell migration    32/968 203/28905  0.1576355
-GO:0060326 GO:0060326            cell chemotaxis    41/968 334/28905  0.1227545
+GO:0050900 GO:0050900        leukocyte migration    50/965 408/28832  0.1225490
+GO:0006935 GO:0006935                 chemotaxis    54/965 475/28832  0.1136842
+GO:0042330 GO:0042330                      taxis    54/965 477/28832  0.1132075
+GO:0030595 GO:0030595       leukocyte chemotaxis    35/965 242/28832  0.1446281
+GO:0060326 GO:0060326            cell chemotaxis    41/965 337/28832  0.1216617
+GO:0071674 GO:0071674 mononuclear cell migration    32/965 229/28832  0.1397380
            FoldEnrichment    zScore       pvalue     p.adjust       qvalue
-GO:0050900       3.788277 10.479256 3.536123e-16 1.795643e-12 1.304643e-12
-GO:0006935       3.339243  9.465940 3.336947e-14 6.712316e-11 4.876903e-11
-GO:0042330       3.324942  9.428613 3.965528e-14 6.712316e-11 4.876903e-11
-GO:0030595       4.442063 10.009042 6.591196e-14 8.367524e-11 6.079511e-11
-GO:0071674       4.707080  9.866216 3.208410e-13 3.258461e-10 2.367469e-10
-GO:0060326       3.665515  9.120495 8.641191e-13 7.313328e-10 5.313575e-10
-                                                                                                                                                                                                                                                                                                               geneID
-GO:0050900              Tnfsf18/Sell/Slamf9/Fut7/Itga4/Mdk/Grem1/Ada/Prex1/Edn3/P2ry12/Il12a/S100a8/S100a9/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Trpm4/Hsd3b7/Itgam/Adam8/Ascl2/Calr/Ccl17/Enpp1/Aire/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Aoc3/Itgb3/Ccl28/Lgals3/Ptk2b/Emp2/Apod/Retnlg/Plg/Fpr2/Dusp1/Ager/Il33/Ch25h
-GO:0006935 Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/P2ry12/Il12a/S100a8/S100a9/Lpar1/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Ntf3/Trpm4/Hsd3b7/Itgam/Adam8/Lsp1/Calr/Ccl17/Robo3/Cmtm7/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Itgb3/Tubb2b/Ccl28/Lgals3/Cmtm5/Ptk2b/Nr4a1/Casr/Retnlg/Fpr2/Dusp1/Ager/Stx3/Ch25h/Plxnb3/Nox1
-GO:0042330 Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/P2ry12/Il12a/S100a8/S100a9/Lpar1/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Ntf3/Trpm4/Hsd3b7/Itgam/Adam8/Lsp1/Calr/Ccl17/Robo3/Cmtm7/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Itgb3/Tubb2b/Ccl28/Lgals3/Cmtm5/Ptk2b/Nr4a1/Casr/Retnlg/Fpr2/Dusp1/Ager/Stx3/Ch25h/Plxnb3/Nox1
-GO:0030595                                                                                              Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/Il12a/S100a8/S100a9/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Trpm4/Hsd3b7/Itgam/Adam8/Calr/Ccl17/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Lgals3/Ptk2b/Retnlg/Fpr2/Dusp1/Ch25h
-GO:0071674                                                                                                                      Tnfsf18/Slamf9/Fut7/Itga4/Mdk/Grem1/Il12a/Nbl1/Padi2/Alox5/Trpm4/Hsd3b7/Adam8/Ascl2/Calr/Ccl17/Aire/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Itgb3/Lgals3/Ptk2b/Apod/Retnlg/Plg/Fpr2/Dusp1/Ager/Ch25h
-GO:0060326                                                                Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/Il12a/S100a8/S100a9/Lpar1/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Trpm4/Hsd3b7/Itgam/Adam8/Calr/Ccl17/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Ccl28/Lgals3/Ptk2b/Nr4a1/Retnlg/Fpr2/Dusp1/Ch25h/Plxnb3/Nox1
+GO:0050900       3.661485 10.075346 2.751321e-15 1.053782e-11 7.745382e-12
+GO:0006935       3.396625  9.800882 5.186751e-15 1.053782e-11 7.745382e-12
+GO:0042330       3.382383  9.763475 6.190224e-15 1.053782e-11 7.745382e-12
+GO:0030595       4.321158  9.654694 3.373742e-13 4.307425e-10 3.165991e-10
+GO:0060326       3.634975  9.054313 1.137629e-12 1.161974e-09 8.540597e-10
+GO:0071674       4.175053  8.976588 8.861995e-12 6.891923e-09 5.065617e-09
+                                                                                                                                                                                                                                                                                                                             geneID
+GO:0050900                                 Tnfsf18/Sell/Slamf9/Fut7/Itga4/Mdk/Grem1/Ada/Prex1/Edn3/P2ry12/Il12a/S100a8/S100a9/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Trpm4/Hsd3b7/Itgam/Adam8/Ascl2/Gdf15/Calr/Enpp1/Aire/Ccl2/Ccl7/Ccl5/Ccr7/Aoc3/Itgb3/Ccl28/Lgals3/Ptk2b/Emp2/Apod/Retnlg/Plg/Fpr2/Dusp1/Ager/Il33/Ch25h
+GO:0006935 Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/P2ry12/Il12a/S100a7a/S100a8/S100a9/Lpar1/Ptgr1/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Ntf3/Trpm4/Hsd3b7/Itgam/Adam8/Lsp1/Calr/Ccl17/Robo3/Cmtm7/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Itgb3/Tubb2b/Ccl28/Lgals3/Cmtm5/Ptk2b/Nr4a1/Casr/Retnlg/Fpr2/Dusp1/Ager/Stx3/Ch25h/Plxnb3/Nox1
+GO:0042330 Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/P2ry12/Il12a/S100a7a/S100a8/S100a9/Lpar1/Ptgr1/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Ntf3/Trpm4/Hsd3b7/Itgam/Adam8/Lsp1/Calr/Ccl17/Robo3/Cmtm7/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Itgb3/Tubb2b/Ccl28/Lgals3/Cmtm5/Ptk2b/Nr4a1/Casr/Retnlg/Fpr2/Dusp1/Ager/Stx3/Ch25h/Plxnb3/Nox1
+GO:0030595                                                                                                                 Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/Il12a/S100a8/S100a9/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Trpm4/Hsd3b7/Itgam/Adam8/Calr/Ccl2/Ccl7/Ccl5/Ccr7/Ccl28/Lgals3/Ptk2b/Retnlg/Fpr2/Dusp1/Ch25h
+GO:0060326                                                                              Tnfsf18/Sell/Slamf9/Mdk/Grem1/Prex1/Edn3/Il12a/S100a8/S100a9/Lpar1/Nbl1/Padi2/Bst1/Cxcl5/Ppbp/Pf4/Cxcl1/Ptn/Alox5/Trpm4/Hsd3b7/Itgam/Adam8/Calr/Ccl17/Ccl2/Ccl7/Ccl5/Ccl6/Ccr7/Ccl28/Lgals3/Ptk2b/Nr4a1/Retnlg/Fpr2/Dusp1/Ch25h/Plxnb3/Nox1
+GO:0071674                                                                                                                                  Tnfsf18/Slamf9/Fut7/Itga4/Mdk/Grem1/P2ry12/Il12a/Nbl1/Padi2/Alox5/Trpm4/Hsd3b7/Adam8/Ascl2/Calr/Enpp1/Aire/Ccl2/Ccl7/Ccl5/Ccr7/Itgb3/Lgals3/Ptk2b/Apod/Retnlg/Plg/Fpr2/Dusp1/Ager/Ch25h
            Count
-GO:0050900    51
-GO:0006935    52
-GO:0042330    52
-GO:0030595    36
-GO:0071674    32
+GO:0050900    50
+GO:0006935    54
+GO:0042330    54
+GO:0030595    35
 GO:0060326    41
+GO:0071674    32
 ```
 
 `barplot()` and `dotplot()` generate plots for a small number of significant gene sets.
