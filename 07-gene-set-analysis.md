@@ -500,9 +500,9 @@ microbenchmark(
 
 ``` output
 Unit: microseconds
-   expr     min       lq      mean   median       uq     max neval
- fisher 252.862 256.6095 271.66396 260.1555 274.3825 554.906   100
-  hyper   1.593   1.8085   2.86012   3.0160   3.2860  16.892   100
+   expr     min      lq      mean   median       uq     max neval
+ fisher 251.749 257.881 269.81899 262.7755 274.9125 494.413   100
+  hyper   1.603   1.798   2.83458   3.0005   3.2260  15.169   100
 ```
 
 It is very astonishing that `phyper()` is hundreds of times faster than
@@ -1235,7 +1235,7 @@ resTimeGO = enrichGO(gene = timeDEgenes,
 ```
 
 ``` output
---> Expected input gene ID: 19819,22164,83945,18817,56708,75698
+--> Expected input gene ID: 52276,12649,20371,13871,15193,72831
 ```
 
 ``` output
