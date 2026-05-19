@@ -249,7 +249,8 @@ bad1 <- SummarizedExperiment(
 ```
 
 ``` error
-Error in validObject(.Object): invalid class "SummarizedExperiment" object: 
+Error in `validObject()`:
+! invalid class "SummarizedExperiment" object: 
     nb of cols in 'assay' (22) must equal nb of rows in 'colData' (3)
 ```
 
@@ -266,7 +267,8 @@ bad2 <- SummarizedExperiment(
 ```
 
 ``` error
-Error in SummarizedExperiment(assays = list(counts = as.matrix(counts)), : the rownames and colnames of the supplied assay(s) must be NULL or identical
+Error in `SummarizedExperiment()`:
+! the rownames and colnames of the supplied assay(s) must be NULL or identical
   to those of the RangedSummarizedExperiment object (or derivative) to
   construct
 ```
@@ -752,21 +754,23 @@ sessionInfo()
 ```
 
 ``` output
-R version 4.5.1 (2025-06-13)
+R version 4.5.3 (2026-03-11)
 Platform: x86_64-pc-linux-gnu
-Running under: Ubuntu 22.04.5 LTS
+Running under: Ubuntu 24.04.4 LTS
 
 Matrix products: default
-BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.10.0 
-LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.10.0  LAPACK version 3.10.0
+BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 
+LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so;  LAPACK version 3.12.0
 
 locale:
- [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       
- [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   
- [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          
-[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 
-time zone: UTC
+time zone: Etc/UTC
 tzcode source: system (glibc)
 
 attached base packages:
@@ -778,24 +782,26 @@ other attached packages:
  [3] org.Mm.eg.db_3.21.0         AnnotationDbi_1.70.0       
  [5] SummarizedExperiment_1.38.1 Biobase_2.68.0             
  [7] MatrixGenerics_1.20.0       matrixStats_1.5.0          
- [9] GenomicRanges_1.60.0        GenomeInfoDb_1.44.1        
+ [9] GenomicRanges_1.60.0        GenomeInfoDb_1.44.3        
 [11] IRanges_2.42.0              S4Vectors_0.46.0           
-[13] BiocGenerics_0.54.0         generics_0.1.4             
-[15] knitr_1.50                 
+[13] BiocGenerics_0.54.1         generics_0.1.4             
+[15] knitr_1.51                 
 
 loaded via a namespace (and not attached):
- [1] Matrix_1.7-3            bit_4.6.0               jsonlite_2.0.0         
- [4] compiler_4.5.1          BiocManager_1.30.26     renv_1.1.5             
- [7] crayon_1.5.3            blob_1.2.4              Biostrings_2.76.0      
-[10] png_0.1-8               fastmap_1.2.0           yaml_2.3.10            
-[13] lattice_0.22-7          R6_2.6.1                XVector_0.48.0         
+ [1] Matrix_1.7-5            bit_4.6.0               jsonlite_2.0.0         
+ [4] compiler_4.5.3          BiocManager_1.30.27     renv_1.2.3             
+ [7] crayon_1.5.3            blob_1.3.0              Biostrings_2.76.0      
+[10] png_0.1-9               fastmap_1.2.0           yaml_2.3.12            
+[13] lattice_0.22-9          R6_2.6.1                XVector_0.48.0         
 [16] S4Arrays_1.8.1          DelayedArray_0.34.1     GenomeInfoDbData_1.2.14
-[19] DBI_1.2.3               rlang_1.1.6             KEGGREST_1.48.1        
-[22] cachem_1.1.0            xfun_0.52               bit64_4.6.0-1          
-[25] memoise_2.0.1           SparseArray_1.8.1       RSQLite_2.4.2          
-[28] cli_3.6.5               grid_4.5.1              vctrs_0.6.5            
-[31] evaluate_1.0.4          abind_1.4-8             httr_1.4.7             
-[34] pkgconfig_2.0.3         tools_4.5.1             UCSC.utils_1.4.0       
+[19] DBI_1.3.0               pillar_1.11.1           rlang_1.2.0            
+[22] KEGGREST_1.48.1         cachem_1.1.0            xfun_0.57              
+[25] bit64_4.8.2             otel_0.2.0              SparseArray_1.8.1      
+[28] RSQLite_3.52.0          memoise_2.0.1           cli_3.6.6              
+[31] grid_4.5.3              lifecycle_1.0.5         vctrs_0.7.3            
+[34] glue_1.8.1              evaluate_1.0.5          abind_1.4-8            
+[37] httr_1.4.8              pkgconfig_2.0.3         tools_4.5.3            
+[40] UCSC.utils_1.4.0       
 ```
 
 ::: keypoints

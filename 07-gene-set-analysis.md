@@ -196,7 +196,7 @@ plot(venn(list("sexDEgenes"  = sexDEgenes,
 title(paste0("|universe| = ", length(totalGenes)))
 ```
 
-<img src="fig/07-gene-set-analysis-rendered-venn-diagram-1.png" style="display: block; margin: auto;" />
+<img src="fig/07-gene-set-analysis-rendered-venn-diagram-1.png" alt="" style="display: block; margin: auto;" />
 
 In the Venn diagram, we can observe that around 1.1% (13/1134) of genes in the
 _XY gene set_ are DE. Compared to the global fraction of DE genes (54/21198 =
@@ -380,7 +380,7 @@ genes are marked as non-DE genes (in blue). We grab $n_{+1}$ genes (the size
 of the gene set) from the box and we want to ask **what is the probability of
 having $n_{11}$ DE genes in our hand?**
 
-<img src="fig/07-gene-set-analysis-rendered-hypergeom-1.png" width="80%" style="display: block; margin: auto;" />
+<img src="fig/07-gene-set-analysis-rendered-hypergeom-1.png" alt="" width="80%" style="display: block; margin: auto;" />
 
 We first calculate the total number of ways of picking $n_{+1}$ genes from
 total $n$ genes, without distinguishing whether they are DE or not:
@@ -500,9 +500,9 @@ microbenchmark(
 
 ``` output
 Unit: microseconds
-   expr     min       lq      mean   median      uq     max neval
- fisher 250.467 255.0710 266.17258 258.0365 272.644 517.686   100
-  hyper   1.553   1.7635   2.74577   2.1695   3.276  18.595   100
+   expr     min       lq      mean   median       uq     max neval
+ fisher 263.852 269.3920 285.45088 274.3565 292.2200 529.648   100
+  hyper   1.714   1.9885   3.26744   3.0660   3.5265  27.020   100
 ```
 
 It is very astonishing that `phyper()` is hundreds of times faster than
@@ -1047,7 +1047,7 @@ setName: DESCARTES_MAIN_FETAL_CHROMAFFIN_CELLS
 geneIds: Asic5, Cntfr, ..., Slc22a22 (total: 28)
 geneIdType: Symbol
 collectionType: Broad
-  bcCategory: c8 (Cell Type Signatures)
+  bcCategory: c8 (Cell Type Signatures)mh (Mouse-Ortholog Hallmark)
   bcSubCategory: NA
 details: use 'details(object)'
 ```
@@ -1058,7 +1058,7 @@ collectionType(gs)
 
 ``` output
 collectionType: Broad
-  bcCategory: c8 (Cell Type Signatures)
+  bcCategory: c8 (Cell Type Signatures)mh (Mouse-Ortholog Hallmark)
   bcSubCategory: NA
 ```
 
@@ -1191,7 +1191,7 @@ resTimeGO = enrichGO(gene = timeDEgenes,
 ```
 
 ``` output
---> Expected input gene ID: 56708,19819,12487,214763,18975,17725
+--> Expected input gene ID: 99982,104884,74393,57294,19264,51869
 ```
 
 ``` output
@@ -1439,19 +1439,19 @@ mmu00592                               alpha-Linolenic acid metabolism
 mmu04913                                       Ovarian steroidogenesis
 mmu04061 Viral protein interaction with cytokine and cytokine receptor
          GeneRatio  BgRatio RichFactor FoldEnrichment   zScore       pvalue
-mmu00590    16/456 89/10564  0.1797753       4.164794 6.368056 1.075745e-06
-mmu00591    12/456 55/10564  0.2181818       5.054545 6.403041 2.924678e-06
-mmu00565    11/456 48/10564  0.2291667       5.309028 6.355037 4.560609e-06
-mmu00592     8/456 25/10564  0.3200000       7.413333 6.818637 6.405461e-06
-mmu04913    12/456 65/10564  0.1846154       4.276923 5.628497 1.813242e-05
-mmu04061    14/456 95/10564  0.1473684       3.414035 5.019913 5.275521e-05
+mmu00590    16/461 89/11162  0.1797753       4.352824 6.591176 6.041150e-07
+mmu00591    12/461 55/11162  0.2181818       5.282745 6.608380 1.856349e-06
+mmu00565    11/461 49/11162  0.2244898       5.435477 6.458216 3.717376e-06
+mmu00592     8/461 25/11162  0.3200000       7.748026 7.010556 4.631542e-06
+mmu04913    12/461 64/11162  0.1875000       4.539859 5.894452 9.910316e-06
+mmu04061    14/461 95/11162  0.1473684       3.568170 5.217476 3.275867e-05
              p.adjust       qvalue
-mmu00590 0.0003388597 0.0002762967
-mmu00591 0.0004606368 0.0003755903
-mmu00565 0.0004788640 0.0003904522
-mmu00592 0.0005044300 0.0004112980
-mmu04913 0.0011423426 0.0009314339
-mmu04061 0.0027696485 0.0022582932
+mmu00590 0.0001921086 0.0001507108
+mmu00591 0.0002951594 0.0002315551
+mmu00565 0.0003682076 0.0002888620
+mmu00592 0.0003682076 0.0002888620
+mmu04913 0.0006302961 0.0004944726
+mmu04061 0.0017362097 0.0013620711
                                                                                                        geneID
 mmu00590 18783/19215/211429/329502/78390/19223/67103/242546/13118/18781/18784/11689/232889/15446/237625/11687
 mmu00591                        18783/211429/329502/78390/242546/18781/18784/13113/622127/232889/237625/11687
@@ -1721,7 +1721,7 @@ legend("topleft", legend = c("all protein-coding genes as universe", "all genes 
     pch = 16, col = c(2, 4))
 ```
 
-<img src="fig/07-gene-set-analysis-rendered-compare-universe-1.png" style="display: block; margin: auto;" />
+<img src="fig/07-gene-set-analysis-rendered-compare-universe-1.png" alt="" style="display: block; margin: auto;" />
 
 It is very straightforward to see, with a larger universe, there are more
 significant gene sets, which may produce potentially more false positives.
@@ -1799,13 +1799,13 @@ Note the two functions are directly applied on `resTimeGO` returned by `enrichGO
 barplot(resTimeGO, showCategory = 20)
 ```
 
-<img src="fig/07-gene-set-analysis-rendered-more-enrichplots-1.png" style="display: block; margin: auto;" />
+<img src="fig/07-gene-set-analysis-rendered-more-enrichplots-1.png" alt="" style="display: block; margin: auto;" />
 
 ``` r
 dotplot(resTimeGO, showCategory = 20)
 ```
 
-<img src="fig/07-gene-set-analysis-rendered-more-enrichplots-2.png" style="display: block; margin: auto;" />
+<img src="fig/07-gene-set-analysis-rendered-more-enrichplots-2.png" alt="" style="display: block; margin: auto;" />
 
 Barplots can map two variables to the plot, one to the height of bars and the
 other to the colors of bars; while for dotplot, sizes of dots can be mapped to
@@ -1918,7 +1918,7 @@ ggplot(resTimeGOTable[1:10, ],
     ylab("")
 ```
 
-<img src="fig/07-gene-set-analysis-rendered-plot-enrichment-1.png" style="display: block; margin: auto;" />
+<img src="fig/07-gene-set-analysis-rendered-plot-enrichment-1.png" alt="" style="display: block; margin: auto;" />
 
 In the next example, we use _z_-score as the primary variable to map to the
 offset to origin, `DE_Ratio` and `Count` to map to dot colors and sizes.
@@ -1932,7 +1932,7 @@ ggplot(resTimeGOTable[1:10, ],
     ylab("")
 ```
 
-<img src="fig/07-gene-set-analysis-rendered-plot-z-1.png" style="display: block; margin: auto;" />
+<img src="fig/07-gene-set-analysis-rendered-plot-z-1.png" alt="" style="display: block; margin: auto;" />
 
 Both plots can highlight the gene set "leukocyte migration involved in
 inflammatory response" is relatively small but highly enriched.
@@ -1958,7 +1958,7 @@ ggplot(resTimeGOTable,
     geom_vline(xintercept = 1.5, lty = 2, col = "#444444")
 ```
 
-<img src="fig/07-gene-set-analysis-rendered-plot-enrichment-padj-1.png" style="display: block; margin: auto;" />
+<img src="fig/07-gene-set-analysis-rendered-plot-enrichment-padj-1.png" alt="" style="display: block; margin: auto;" />
 
 In the "volcano plot", we can observe the plot is composed by a list of
 curves. The trends are especially clear in the right bottom of the plot.
@@ -2035,7 +2035,7 @@ ggplot(rbind(resTimeGOupTable[1:5, ],
     ylab("")
 ```
 
-<img src="fig/07-gene-set-analysis-rendered-plot-up-down-1.png" style="display: block; margin: auto;" />
+<img src="fig/07-gene-set-analysis-rendered-plot-up-down-1.png" alt="" style="display: block; margin: auto;" />
 
 
 Specifically for GO enrichment, it is often that GO enrichment returns a long
