@@ -207,7 +207,7 @@
       </button>
     </div><!--/div.accordion-header-->
 
-    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
+    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#the-statistical-method">The statistical method</a></li>
 <li><a href="#gene-set-resources">Gene set resources</a></li>
@@ -279,7 +279,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Gene set enrichment analysis</h1>
-        <p> Last updated on 2025-08-05 |
+        <p> Last updated on 2026-05-19 |
 
         <a href="https://github.com/carpentries-incubator/bioc-rnaseq/edit/main/episodes/07-gene-set-analysis.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -491,7 +491,7 @@ diagram.</p>
 <span>               <span class="st">"XY gene set"</span> <span class="op">=</span> <span class="va">XYGeneSet</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">title</span><span class="op">(</span><span class="fu">paste0</span><span class="op">(</span><span class="st">"|universe| = "</span>, <span class="fu">length</span><span class="op">(</span><span class="va">totalGenes</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/07-gene-set-analysis-rendered-venn-diagram-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>In the Venn diagram, we can observe that around 1.1% (13/1134) of
+<figure><img src="fig/07-gene-set-analysis-rendered-venn-diagram-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>In the Venn diagram, we can observe that around 1.1% (13/1134) of
 genes in the <em>XY gene set</em> are DE. Compared to the global
 fraction of DE genes (54/21198 = 0.25%), it seems there is a strong
 relations between DE genes and the gene set. We can also compare the
@@ -512,19 +512,19 @@ size of the <em>XY gene set</em> (i.e. the number of member genes),
 <span class="math inline">\(n_{1+}\)</span> is the number of DE genes,
 <span class="math inline">\(n\)</span> is the number of total genes.</p>
 <center>
-<table class="table"><thead><tr class="header"><th></th>
+<table class="table"><thead><tr><th></th>
 <th>In the gene set</th>
 <th>Not in the gene set</th>
 <th>Total</th>
-</tr></thead><tbody><tr class="odd"><td><strong>DE</strong></td>
+</tr></thead><tbody><tr><td><strong>DE</strong></td>
 <td><span class="math inline">\(n_{11}\)</span></td>
 <td><span class="math inline">\(n_{12}\)</span></td>
 <td><span class="math inline">\(n_{1+}\)</span></td>
-</tr><tr class="even"><td><strong>Not DE</strong></td>
+</tr><tr><td><strong>Not DE</strong></td>
 <td><span class="math inline">\(n_{21}\)</span></td>
 <td><span class="math inline">\(n_{22}\)</span></td>
 <td><span class="math inline">\(n_{2+}\)</span></td>
-</tr><tr class="odd"><td><strong>Total</strong></td>
+</tr><tr><td><strong>Total</strong></td>
 <td><span class="math inline">\(n_{+1}\)</span></td>
 <td><span class="math inline">\(n_{+2}\)</span></td>
 <td><span class="math inline">\(n\)</span></td>
@@ -569,19 +569,19 @@ size of the <em>XY gene set</em> (i.e. the number of member genes),
 </div>
 <p>And we fill these numbers into the 2x2 contingency table:</p>
 <center>
-<table class="table"><thead><tr class="header"><th></th>
+<table class="table"><thead><tr><th></th>
 <th>In the gene set</th>
 <th>Not in the gene set</th>
 <th>Total</th>
-</tr></thead><tbody><tr class="odd"><td><strong>DE</strong></td>
+</tr></thead><tbody><tr><td><strong>DE</strong></td>
 <td>13</td>
 <td>41</td>
 <td>54</td>
-</tr><tr class="even"><td><strong>Not DE</strong></td>
+</tr><tr><td><strong>Not DE</strong></td>
 <td>1121</td>
 <td>20023</td>
 <td>21144</td>
-</tr><tr class="odd"><td><strong>Total</strong></td>
+</tr><tr><td><strong>Total</strong></td>
 <td>1134</td>
 <td>20064</td>
 <td>21198</td>
@@ -655,19 +655,19 @@ over-representation of DE genes on the gene set.</p>
 the Fisher’s exact test. E.g. let’s put whether genes are in the gene
 sets on rows, and put whether genes are DE on columns.</p>
 <center>
-<table class="table"><thead><tr class="header"><th></th>
+<table class="table"><thead><tr><th></th>
 <th>DE</th>
 <th>Not DE</th>
 <th>Total</th>
-</tr></thead><tbody><tr class="odd"><td><strong>In the gene set</strong></td>
+</tr></thead><tbody><tr><td><strong>In the gene set</strong></td>
 <td>13</td>
 <td>1121</td>
 <td>1134</td>
-</tr><tr class="even"><td><strong>Not in the gene set</strong></td>
+</tr><tr><td><strong>Not in the gene set</strong></td>
 <td>41</td>
 <td>20023</td>
 <td>20064</td>
-</tr><tr class="odd"><td><strong>Total</strong></td>
+</tr><tr><td><strong>Total</strong></td>
 <td>54</td>
 <td>21144</td>
 <td>21198</td>
@@ -709,7 +709,7 @@ grab <span class="math inline">\(n_{+1}\)</span> genes (the size of the
 gene set) from the box and we want to ask <strong>what is the
 probability of having <span class="math inline">\(n_{11}\)</span> DE
 genes in our hand?</strong></p>
-<figure><img src="fig/07-gene-set-analysis-rendered-hypergeom-1.png" width="80%" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>We first calculate the total number of ways of picking <span class="math inline">\(n_{+1}\)</span> genes from total <span class="math inline">\(n\)</span> genes, without distinguishing whether
+<figure><img src="fig/07-gene-set-analysis-rendered-hypergeom-1.png" alt="" width="80%" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>We first calculate the total number of ways of picking <span class="math inline">\(n_{+1}\)</span> genes from total <span class="math inline">\(n\)</span> genes, without distinguishing whether
 they are DE or not: <span class="math inline">\(\binom{n}{n_{+1}}\)</span>.</p>
 <p>Next, in the <span class="math inline">\(n_{+1}\)</span> genes that
 have been picked, there are <span class="math inline">\(n_{11}\)</span>
@@ -835,9 +835,9 @@ distribution of its statistic.</p>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>Unit: microseconds
-   expr     min       lq      mean   median      uq     max neval
- fisher 250.467 255.0710 266.17258 258.0365 272.644 517.686   100
-  hyper   1.553   1.7635   2.74577   2.1695   3.276  18.595   100</code></pre>
+   expr     min       lq      mean   median       uq     max neval
+ fisher 263.852 269.3920 285.45088 274.3565 292.2200 529.648   100
+  hyper   1.714   1.9885   3.26744   3.0660   3.5265  27.020   100</code></pre>
 </div>
 <p>It is very astonishing that <code>phyper()</code> is hundreds of
 times faster than <code>fisher.test()</code>. Main reason is in
@@ -1064,43 +1064,43 @@ terms and genes are integrated in the Bioconductor standard packages:
 <em>the organism annotation packages</em>. In the current Bioconductor
 release, there are the following organism packages:</p>
 <center>
-<table class="table"><colgroup><col width="27%"><col width="25%"><col width="36%"><col width="10%"></colgroup><thead><tr class="header"><th>Package</th>
+<table class="table"><colgroup><col width="27%"><col width="25%"><col width="36%"><col width="10%"></colgroup><thead><tr><th>Package</th>
 <th>Organism</th>
 <th>Package</th>
 <th>Organism</th>
-</tr></thead><tbody><tr class="odd"><td>org.Hs.eg.db</td>
+</tr></thead><tbody><tr><td>org.Hs.eg.db</td>
 <td>Human</td>
 <td>org.Mm.eg.db</td>
 <td>Mouse</td>
-</tr><tr class="even"><td>org.Rn.eg.db</td>
+</tr><tr><td>org.Rn.eg.db</td>
 <td>Rat</td>
 <td>org.Dm.eg.db</td>
 <td>Fly</td>
-</tr><tr class="odd"><td>org.At.tair.db</td>
+</tr><tr><td>org.At.tair.db</td>
 <td>Arabidopsis</td>
 <td>org.Dr.eg.db</td>
 <td>Zebrafish</td>
-</tr><tr class="even"><td>org.Sc.sgd.db</td>
+</tr><tr><td>org.Sc.sgd.db</td>
 <td>Yeast</td>
 <td>org.Ce.eg.db</td>
 <td>Worm</td>
-</tr><tr class="odd"><td>org.Bt.eg.db</td>
+</tr><tr><td>org.Bt.eg.db</td>
 <td>Bovine</td>
 <td>org.Gg.eg.db</td>
 <td>Chicken</td>
-</tr><tr class="even"><td>org.Ss.eg.db</td>
+</tr><tr><td>org.Ss.eg.db</td>
 <td>Pig</td>
 <td>org.Mmu.eg.db</td>
 <td>Rhesus</td>
-</tr><tr class="odd"><td>org.Cf.eg.db</td>
+</tr><tr><td>org.Cf.eg.db</td>
 <td>Canine</td>
 <td>org.EcK12.eg.db</td>
 <td>E coli strain K12</td>
-</tr><tr class="even"><td>org.Xl.eg.db</td>
+</tr><tr><td>org.Xl.eg.db</td>
 <td>Xenopus</td>
 <td>org.Pt.eg.db</td>
 <td>Chimp</td>
-</tr><tr class="odd"><td>org.Ag.eg.db</td>
+</tr><tr><td>org.Ag.eg.db</td>
 <td>Anopheles</td>
 <td>org.EcSakai.eg.db</td>
 <td>E coli strain Sakai</td>
@@ -1422,7 +1422,7 @@ defined in the <code>GSEABase</code> package.</p>
 geneIds: Asic5, Cntfr, ..., Slc22a22 (total: 28)
 geneIdType: Symbol
 collectionType: Broad
-  bcCategory: c8 (Cell Type Signatures)
+  bcCategory: c8 (Cell Type Signatures)mh (Mouse-Ortholog Hallmark)
   bcSubCategory: NA
 details: use 'details(object)'</code></pre>
 </div>
@@ -1436,7 +1436,7 @@ details: use 'details(object)'</code></pre>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>collectionType: Broad
-  bcCategory: c8 (Cell Type Signatures)
+  bcCategory: c8 (Cell Type Signatures)mh (Mouse-Ortholog Hallmark)
   bcSubCategory: NA</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb67">
@@ -1583,7 +1583,7 @@ sets are automatically retrieved and processed from
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>--&gt; Expected input gene ID: 56708,19819,12487,214763,18975,17725</code></pre>
+<pre class="output" tabindex="0"><code>--&gt; Expected input gene ID: 99982,104884,74393,57294,19264,51869</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1861,19 +1861,19 @@ mmu00592                               alpha-Linolenic acid metabolism
 mmu04913                                       Ovarian steroidogenesis
 mmu04061 Viral protein interaction with cytokine and cytokine receptor
          GeneRatio  BgRatio RichFactor FoldEnrichment   zScore       pvalue
-mmu00590    16/456 89/10564  0.1797753       4.164794 6.368056 1.075745e-06
-mmu00591    12/456 55/10564  0.2181818       5.054545 6.403041 2.924678e-06
-mmu00565    11/456 48/10564  0.2291667       5.309028 6.355037 4.560609e-06
-mmu00592     8/456 25/10564  0.3200000       7.413333 6.818637 6.405461e-06
-mmu04913    12/456 65/10564  0.1846154       4.276923 5.628497 1.813242e-05
-mmu04061    14/456 95/10564  0.1473684       3.414035 5.019913 5.275521e-05
+mmu00590    16/461 89/11162  0.1797753       4.352824 6.591176 6.041150e-07
+mmu00591    12/461 55/11162  0.2181818       5.282745 6.608380 1.856349e-06
+mmu00565    11/461 49/11162  0.2244898       5.435477 6.458216 3.717376e-06
+mmu00592     8/461 25/11162  0.3200000       7.748026 7.010556 4.631542e-06
+mmu04913    12/461 64/11162  0.1875000       4.539859 5.894452 9.910316e-06
+mmu04061    14/461 95/11162  0.1473684       3.568170 5.217476 3.275867e-05
              p.adjust       qvalue
-mmu00590 0.0003388597 0.0002762967
-mmu00591 0.0004606368 0.0003755903
-mmu00565 0.0004788640 0.0003904522
-mmu00592 0.0005044300 0.0004112980
-mmu04913 0.0011423426 0.0009314339
-mmu04061 0.0027696485 0.0022582932
+mmu00590 0.0001921086 0.0001507108
+mmu00591 0.0002951594 0.0002315551
+mmu00565 0.0003682076 0.0002888620
+mmu00592 0.0003682076 0.0002888620
+mmu04913 0.0006302961 0.0004944726
+mmu04061 0.0017362097 0.0013620711
                                                                                                        geneID
 mmu00590 18783/19215/211429/329502/78390/19223/67103/242546/13118/18781/18784/11689/232889/15446/237625/11687
 mmu00591                        18783/211429/329502/78390/242546/18781/18784/13113/622127/232889/237625/11687
@@ -2094,19 +2094,19 @@ affects three values of <span class="math inline">\(n_{22}\)</span>,
 <span class="math inline">\(n_{02}\)</span> and <span class="math inline">\(n_{20}\)</span> more, which correspond to the
 non-DE genes or non-gene-set genes.</p>
 <center>
-<table class="table"><colgroup><col width="19%"><col width="28%"><col width="38%"><col width="13%"></colgroup><thead><tr class="header"><th></th>
+<table class="table"><colgroup><col width="19%"><col width="28%"><col width="38%"><col width="13%"></colgroup><thead><tr><th></th>
 <th>In the gene set</th>
 <th>Not in the gene set</th>
 <th>Total</th>
-</tr></thead><tbody><tr class="odd"><td><strong>DE</strong></td>
+</tr></thead><tbody><tr><td><strong>DE</strong></td>
 <td><span class="math inline">\(n_{11}\)</span></td>
 <td><span class="math inline">\(n_{12}\)</span></td>
 <td><span class="math inline">\(n_{1+}\)</span></td>
-</tr><tr class="even"><td><strong>Not DE</strong></td>
+</tr><tr><td><strong>Not DE</strong></td>
 <td><span class="math inline">\(n_{21}\)</span></td>
 <td><span class="math inline">\(\color{red}{n_{22}}\)</span></td>
 <td><span class="math inline">\(\color{red}{n_{2+}}\)</span></td>
-</tr><tr class="odd"><td><strong>Total</strong></td>
+</tr><tr><td><strong>Total</strong></td>
 <td><span class="math inline">\(n_{+1}\)</span></td>
 <td><span class="math inline">\(\color{red}{n_{+2}}\)</span></td>
 <td><span class="math inline">\(\color{red}{n}\)</span></td>
@@ -2164,7 +2164,7 @@ universe settings.</p>
 <span><span class="fu">legend</span><span class="op">(</span><span class="st">"topleft"</span>, legend <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"all protein-coding genes as universe"</span>, <span class="st">"all genes as universe"</span><span class="op">)</span>, </span>
 <span>    pch <span class="op">=</span> <span class="fl">16</span>, col <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/07-gene-set-analysis-rendered-compare-universe-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>It is very straightforward to see, with a larger universe, there are
+<figure><img src="fig/07-gene-set-analysis-rendered-compare-universe-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>It is very straightforward to see, with a larger universe, there are
 more significant gene sets, which may produce potentially more false
 positives. This is definitely worse when using all genes in the genome
 as universe.</p>
@@ -2243,13 +2243,13 @@ directly applied on <code>resTimeGO</code> returned by
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">barplot</span><span class="op">(</span><span class="va">resTimeGO</span>, showCategory <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/07-gene-set-analysis-rendered-more-enrichplots-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb104">
+<figure><img src="fig/07-gene-set-analysis-rendered-more-enrichplots-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb104">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">dotplot</span><span class="op">(</span><span class="va">resTimeGO</span>, showCategory <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/07-gene-set-analysis-rendered-more-enrichplots-2.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Barplots can map two variables to the plot, one to the height of bars
+<figure><img src="fig/07-gene-set-analysis-rendered-more-enrichplots-2.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Barplots can map two variables to the plot, one to the height of bars
 and the other to the colors of bars; while for dotplot, sizes of dots
 can be mapped to a third variable. The variable names are in the colum
 names of the result table. Both plots include the top 20 most
@@ -2360,7 +2360,7 @@ significant gene sets.</p>
 <span>        label <span class="op">=</span> <span class="fu">sprintf</span><span class="op">(</span><span class="st">"%.2e"</span>, <span class="va">p.adjust</span><span class="op">)</span><span class="op">)</span>, hjust <span class="op">=</span> <span class="fl">1</span>, col <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">ylab</span><span class="op">(</span><span class="st">""</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/07-gene-set-analysis-rendered-plot-enrichment-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>In the next example, we use <em>z</em>-score as the primary variable
+<figure><img src="fig/07-gene-set-analysis-rendered-plot-enrichment-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>In the next example, we use <em>z</em>-score as the primary variable
 to map to the offset to origin, <code>DE_Ratio</code> and
 <code>Count</code> to map to dot colors and sizes.</p>
 <div class="codewrapper sourceCode" id="cb110">
@@ -2373,7 +2373,7 @@ to map to the offset to origin, <code>DE_Ratio</code> and
 <span>    <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">ylab</span><span class="op">(</span><span class="st">""</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/07-gene-set-analysis-rendered-plot-z-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Both plots can highlight the gene set “leukocyte migration involved
+<figure><img src="fig/07-gene-set-analysis-rendered-plot-z-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Both plots can highlight the gene set “leukocyte migration involved
 in inflammatory response” is relatively small but highly enriched.</p>
 <p>Another useful visualization is the volcano plot. You may be aware of
 in differential expression analysis, in the volcano plot, x-axis
@@ -2396,7 +2396,7 @@ biologically sensible.</p>
 <span>    <span class="fu">geom_hline</span><span class="op">(</span>yintercept <span class="op">=</span> <span class="op">-</span><span class="fu">log10</span><span class="op">(</span><span class="fl">0.01</span><span class="op">)</span>, lty <span class="op">=</span> <span class="fl">2</span>, col <span class="op">=</span> <span class="st">"#444444"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_vline</span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">1.5</span>, lty <span class="op">=</span> <span class="fl">2</span>, col <span class="op">=</span> <span class="st">"#444444"</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/07-gene-set-analysis-rendered-plot-enrichment-padj-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>In the “volcano plot”, we can observe the plot is composed by a list
+<figure><img src="fig/07-gene-set-analysis-rendered-plot-enrichment-padj-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>In the “volcano plot”, we can observe the plot is composed by a list
 of curves. The trends are especially clear in the right bottom of the
 plot. Actually each “curve” corresponds to a same <code>"Count"</code>
 value (number of DE genes in a gene set). The volcano plot shows very
@@ -2471,7 +2471,7 @@ be easy to read.</p>
 <span>        label <span class="op">=</span> <span class="fu">sprintf</span><span class="op">(</span><span class="st">"%.2e"</span>, <span class="va">p.adjust</span><span class="op">)</span><span class="op">)</span>, hjust <span class="op">=</span> <span class="fl">1</span>, col <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">ylab</span><span class="op">(</span><span class="st">""</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/07-gene-set-analysis-rendered-plot-up-down-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Specifically for GO enrichment, it is often that GO enrichment
+<figure><img src="fig/07-gene-set-analysis-rendered-plot-up-down-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Specifically for GO enrichment, it is often that GO enrichment
 returns a long list of significant GO terms (e.g. several hundreds).
 This makes it difficult to summarize the common functions from the long
 list. The last package we will introduce is the
@@ -2597,8 +2597,8 @@ topological relations in the GO hierarchy.<a href="#fnref7" class="footnote-back
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.17.1" class="external-link">sandpaper (0.17.1)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.1)</a>,
+        <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>,
       and <a href="https://github.com/mblue9/varnish/tree/3403ad0dd37f7641c6442330fcc182937e7964c5" class="external-link">varnish (0.2.16)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
@@ -2621,8 +2621,8 @@ topological relations in the GO hierarchy.<a href="#fnref7" class="footnote-back
   "url": "https://carpentries-incubator.github.io/bioc-rnaseq/07-gene-set-analysis.html",
   "identifier": "https://carpentries-incubator.github.io/bioc-rnaseq/07-gene-set-analysis.html",
   "dateCreated": "2020-09-15",
-  "dateModified": "2025-08-05",
-  "datePublished": "2025-08-26"
+  "dateModified": "2026-05-19",
+  "datePublished": "2026-05-19"
 }
 
   </script><script>
